@@ -1,0 +1,12 @@
+{
+  "name": "postman",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test_task": "newman run Trello_API_Testing.postman_collection.json -e Trello_Testing_Environment.postman_environment.json",
+    "test_course": "newman run ContactList.postman_collection.json -e ContactList.postman_environment.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
