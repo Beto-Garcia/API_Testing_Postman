@@ -10,4 +10,4 @@
 
 ###To run task collection use *npm run test_task*
 
-###To run course collection use *npm run test_course*
+###To run course collection use *npm run test_course**
