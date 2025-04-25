@@ -1,312 +1,280 @@
 {
-	"info": {
-		"_postman_id": "51a1bdf1-2f2c-4296-a075-1ea8b7b67735",
-		"name": "Trello API Testing",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "43391709"
-	},
-	"item": [
-		{
-			"name": "Create a Board",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"let jsonData = pm.response.json();\r",
-							"pm.environment.set(\"Board_Id\", jsonData.id);\r",
-							"\r",
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Content-Type is present\", function () {\r",
-							"    pm.response.to.have.header(\"Content-Type\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Body response include board name\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"name\");\r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://api.trello.com/1/boards/?name=BoardCreatedByPost&key={{API_Key}}&token={{Token}}",
-					"protocol": "https",
-					"host": [
-						"api",
-						"trello",
-						"com"
-					],
-					"path": [
-						"1",
-						"boards",
-						""
-					],
-					"query": [
-						{
-							"key": "name",
-							"value": "BoardCreatedByPost"
-						},
-						{
-							"key": "key",
-							"value": "{{API_Key}}"
-						},
-						{
-							"key": "token",
-							"value": "{{Token}}"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get a Board",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Content-Type is present\", function () {\r",
-							"    pm.response.to.have.header(\"Content-Type\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Body response include board name\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"name\");\r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://api.trello.com/1/boards/{{Board_Id}}?key={{API_Key}}&token={{Token}}",
-					"protocol": "https",
-					"host": [
-						"api",
-						"trello",
-						"com"
-					],
-					"path": [
-						"1",
-						"boards",
-						"{{Board_Id}}"
-					],
-					"query": [
-						{
-							"key": "key",
-							"value": "{{API_Key}}"
-						},
-						{
-							"key": "token",
-							"value": "{{Token}}"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update a Board",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Content-Type is present\", function () {\r",
-							"    pm.response.to.have.header(\"Content-Type\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Body response include board name\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"name\");\r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"BoardUpdatedByPUTRequest\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://api.trello.com/1/boards/{{Board_Id}}?key={{API_Key}}&token={{Token}}",
-					"protocol": "https",
-					"host": [
-						"api",
-						"trello",
-						"com"
-					],
-					"path": [
-						"1",
-						"boards",
-						"{{Board_Id}}"
-					],
-					"query": [
-						{
-							"key": "key",
-							"value": "{{API_Key}}"
-						},
-						{
-							"key": "token",
-							"value": "{{Token}}"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete a Board",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Content-Type is present\", function () {\r",
-							"    pm.response.to.have.header(\"Content-Type\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Body response include null\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"null\");\r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "apikey",
-					"apikey": [
-						{
-							"key": "value",
-							"value": "",
-							"type": "string"
-						}
-					]
-				},
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://api.trello.com/1/boards/{{Board_Id}}?key={{API_Key}}&token={{Token}}",
-					"protocol": "https",
-					"host": [
-						"api",
-						"trello",
-						"com"
-					],
-					"path": [
-						"1",
-						"boards",
-						"{{Board_Id}}"
-					],
-					"query": [
-						{
-							"key": "key",
-							"value": "{{API_Key}}"
-						},
-						{
-							"key": "token",
-							"value": "{{Token}}"
-						}
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "51a1bdf1-2f2c-4296-a075-1ea8b7b67735",
+    "name": "Trello API Testing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43391709"
+  },
+  "item": [
+    {
+      "name": "Create a Board",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "let jsonData = pm.response.json();\r",
+              "pm.environment.set(\"Board_Id\", jsonData.id);\r",
+              "\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Content-Type is present\", function () {\r",
+              "    pm.response.to.have.header(\"Content-Type\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Body response include board name\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"name\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.trello.com/1/boards/?name=BoardCreatedByPost&key={{API_Key}}&token={{Token}}",
+          "protocol": "https",
+          "host": ["api", "trello", "com"],
+          "path": ["1", "boards", ""],
+          "query": [
+            {
+              "key": "name",
+              "value": "BoardCreatedByPost"
+            },
+            {
+              "key": "key",
+              "value": "{{API_Key}}"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get a Board",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Content-Type is present\", function () {\r",
+              "    pm.response.to.have.header(\"Content-Type\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Body response include board name\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"name\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.trello.com/1/boards/{{Board_Id}}?key={{API_Key}}&token={{Token}}",
+          "protocol": "https",
+          "host": ["api", "trello", "com"],
+          "path": ["1", "boards", "{{Board_Id}}"],
+          "query": [
+            {
+              "key": "key",
+              "value": "{{API_Key}}"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update a Board",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Content-Type is present\", function () {\r",
+              "    pm.response.to.have.header(\"Content-Type\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Body response include board name\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"name\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"BoardUpdatedByPUTRequest\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.trello.com/1/boards/{{Board_Id}}?key={{API_Key}}&token={{Token}}",
+          "protocol": "https",
+          "host": ["api", "trello", "com"],
+          "path": ["1", "boards", "{{Board_Id}}"],
+          "query": [
+            {
+              "key": "key",
+              "value": "{{API_Key}}"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete a Board",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Content-Type is present\", function () {\r",
+              "    pm.response.to.have.header(\"Content-Type\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Body response include null\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"null\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.trello.com/1/boards/{{Board_Id}}?key={{API_Key}}&token={{Token}}",
+          "protocol": "https",
+          "host": ["api", "trello", "com"],
+          "path": ["1", "boards", "{{Board_Id}}"],
+          "query": [
+            {
+              "key": "key",
+              "value": "{{API_Key}}"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
 }
