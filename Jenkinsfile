@@ -6,6 +6,7 @@ pipeline {
         bat 'npm install'
         bat 'npm run wdio'
       }
+      
     }
   }
 }
