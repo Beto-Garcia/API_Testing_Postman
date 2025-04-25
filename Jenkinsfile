@@ -3,10 +3,9 @@ pipeline {
   stages {
     stage('Tests') {
       steps {
-        bat 'npm install'
-        bat 'npm run wdio'
+        sh 'npm run wdio'
       }
-      
+
     }
   }
 }
