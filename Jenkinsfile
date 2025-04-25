@@ -7,6 +7,5 @@ pipeline {
         bat 'npm run wdio'
       }
     }
-
   }
 }
